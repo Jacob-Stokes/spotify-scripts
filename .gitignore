@@ -1,0 +1,19 @@
+# Ignore all virtual environments
+**/venv/
+
+# Ignore all .cache folders
+**/.cache/
+
+# Ignore logs and generated state files
+festival_log.txt
+*.json
+
+# Ignore input lists (e.g., artist lists)
+festival-getter/lists/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Environment config (but include a template)
+.env

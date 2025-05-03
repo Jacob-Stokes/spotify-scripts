@@ -1,0 +1,2 @@
+# spotify-scripts
+spotify automation

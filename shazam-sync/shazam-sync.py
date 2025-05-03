@@ -16,10 +16,14 @@ SCOPE = os.getenv("SPOTIFY_SCOPE", "playlist-read-private playlist-modify-public
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 REDIRECT_URI = os.getenv("SPOTIFY_REDIRECT_URI", "http://localhost:8888/callback")
-SOURCE_PLAYLIST_ID = os.getenv("SOURCE_PLAYLIST_ID", "1scoIDExIvmPgpfAVxpI2j")  # My Shazam Tracks
-DEST_PLAYLIST_ID = os.getenv("DEST_PLAYLIST_ID", "0VYnd3gGA4yyWsTkrlMw1l")  # /FIELD
+SOURCE_PLAYLIST_ID = os.getenv("SOURCE_PLAYLIST_ID")
+DEST_PLAYLIST_ID = os.getenv("DEST_PLAYLIST_ID")
 STATE_FILE = os.getenv("SHAZAM_STATE_FILE", "shazam_sync_state.json")
-POLL_INTERVAL = int(os.getenv("SHAZAM_POLL_INTERVAL", "300"))  # 5 minutes
+POLL_INTERVAL = int(os.getenv("SHAZAM_POLL_INTERVAL", "300"))
+
+# Fail early if required env vars are missing
+if not SOURCE_PLAYLIST_ID or not DEST_PLAYLIST_ID:
+    raise ValueError("SOURCE_PLAYLIST_ID and DEST_PLAYLIST_ID must be set in the .env file")
 
 # ====== AUTH ======
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
@@ -58,32 +62,31 @@ def sync_shazam_to_field():
     state = load_state()
     last_synced_id = state.get('last_synced_shazam_id')
     tracks = get_tracks_from_playlist(SOURCE_PLAYLIST_ID)
-    
+
     if not tracks:
-        print("⚠️ No tracks found in Shazam playlist.")
+        print("No tracks found in source playlist.")
         return
-        
-    # First run: just record latest track
+
     if not last_synced_id:
         state['last_synced_shazam_id'] = tracks[0]['id']
         save_state(state)
-        print(f"📌 Baseline set: {tracks[0]['name']} by {tracks[0]['artist']}")
+        print(f"Baseline set: {tracks[0]['name']} by {tracks[0]['artist']}")
         return
-        
+
     new_tracks = []
     for track in tracks:
         if track['id'] == last_synced_id:
             break
         new_tracks.append(track)
-        
+
     if new_tracks:
-        for track in reversed(new_tracks):  # Oldest to newest
-            print(f"➕ {track['name']} by {track['artist']}")
+        for track in reversed(new_tracks):
+            print(f"Adding: {track['name']} by {track['artist']}")
             sp.playlist_add_items(DEST_PLAYLIST_ID, [track['id']])
             state['last_synced_shazam_id'] = track['id']
             save_state(state)
     else:
-        print("⏳ No new Shazam tracks.")
+        print("No new tracks to sync.")
 
 # ====== LOOP ======
 def main():

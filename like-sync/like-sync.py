@@ -18,7 +18,7 @@ CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 REDIRECT_URI = os.getenv("SPOTIFY_REDIRECT_URI", "http://localhost:8888/callback")
 STATE_FILE = os.getenv("STATE_FILE", "liked_songs_state.json")
-GLOBAL_PLAYLIST_NAME = os.getenv("GLOBAL_PLAYLIST_NAME", "∀")
+GLOBAL_PLAYLIST_NAME = os.getenv("GLOBAL_PLAYLIST_NAME")
 POLL_INTERVAL = int(os.getenv("POLL_INTERVAL", "10"))  # seconds
 
 # ====== SPOTIFY AUTH ======
@@ -30,7 +30,7 @@ sp_oauth = SpotifyOAuth(
 )
 
 auth_url = sp_oauth.get_authorize_url()
-print(f"\n🔗 Open this URL in your browser to authenticate:\n{auth_url}\n")
+print(f"\nOpen this URL in your browser to authenticate:\n{auth_url}\n")
 
 sp = spotipy.Spotify(auth_manager=sp_oauth)
 
@@ -61,7 +61,7 @@ def build_playlist_index():
 def create_playlist(name):
     user_id = sp.current_user()['id']
     playlist = sp.user_playlist_create(user_id, name, public=True)
-    print(f"🆕 Created playlist: {name}")
+    print(f"Created playlist: {name}")
     return playlist['id']
 
 def ensure_playlist(name, index):
@@ -91,7 +91,6 @@ def add_track_to_playlist(playlist_id, track_id):
 
 def format_month_year():
     now = datetime.datetime.now()
-    # Format month as three-letter abbreviation + two-digit year
     return now.strftime('%b').upper() + now.strftime('%y')
 
 def format_year():
@@ -109,38 +108,33 @@ def main():
             tracks = get_recent_liked_songs(limit=50)
             new_tracks = []
 
-            # Collect all new songs not yet synced
             for track in tracks:
                 if track['id'] == last_processed_id:
                     break
                 new_tracks.append(track)
 
             if new_tracks:
-                print(f"🎧 Found {len(new_tracks)} new liked song(s)")
-                for track in reversed(new_tracks):  # oldest to newest
-                    print(f"➕ {track['name']} by {track['artists']}")
+                print(f"Found {len(new_tracks)} new liked song(s)")
+                for track in reversed(new_tracks):
+                    print(f"Adding: {track['name']} by {track['artists']}")
 
-                    # Playlist names
                     month_playlist = format_month_year()
                     year_playlist = format_year()
                     global_playlist = GLOBAL_PLAYLIST_NAME
 
-                    # Ensure playlists exist
                     month_id = ensure_playlist(month_playlist, playlist_index)
                     year_id = ensure_playlist(year_playlist, playlist_index)
                     global_id = ensure_playlist(global_playlist, playlist_index)
 
-                    # Add to all
                     add_track_to_playlist(month_id, track['id'])
                     add_track_to_playlist(year_id, track['id'])
                     add_track_to_playlist(global_id, track['id'])
 
-                    # Update state
                     last_processed_id = track['id']
                     state['last_liked_id'] = last_processed_id
                     save_state(state)
             else:
-                print("⏳ No new liked songs.")
+                print("No new liked songs.")
 
         except Exception as e:
             print(f"[Error] {e}")

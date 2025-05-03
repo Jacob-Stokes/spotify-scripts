@@ -1,8 +1,8 @@
 # Ignore all virtual environments
 **/venv/
 
-# Ignore all .cache folders
-**/.cache/
+# Ignore all .cache files and folders
+**/.cache
 
 # Ignore logs and generated state files
 festival_log.txt
@@ -17,3 +17,6 @@ __pycache__/
 
 # Environment config (but include a template)
 .env
+
+
+.DS_Store

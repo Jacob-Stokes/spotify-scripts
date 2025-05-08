@@ -247,10 +247,14 @@ def sync_lastfm_top_tracks():
         
         # Check if tracks have changed
         last_tracks = state.get('last_tracks', [])
-        tracks_changed = (set(spotify_track_ids) != set(last_tracks))
-        
+        tracks_changed = len(spotify_track_ids) != len(last_tracks)         
         if not tracks_changed:
-            print("Top tracks haven't changed since last sync")
+            tracks_changed = spotify_track_ids != last_tracks
+            if tracks_changed:
+                print("Track order has changed since last sync")
+            else:
+                print("Top tracks haven't changed since last sync")            
+        if not tracks_changed:
             return False
         
         # Get playlist info for better logging

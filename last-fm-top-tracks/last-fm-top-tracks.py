@@ -40,8 +40,9 @@ SPOTIFY_SCOPE = os.getenv("LASTFM_SPOTIFY_SCOPE", "playlist-modify-public playli
 SPOTIFY_PLAYLIST_ID = os.getenv("LASTFM_SPOTIFY_PLAYLIST_ID")
 POLL_INTERVAL = int(os.getenv("LASTFM_POLL_INTERVAL", "3600"))  # Default: 1 hour
 STATE_FILE = os.getenv("LASTFM_STATE_FILE", "lastfm_sync_state.json")
+TOPTRACK_NUMBER = int(os.getenv("LASTFM_TOPTRACK_NUMBER", "10"))  # Default: 10 tracks
 
-
+    
 # Fail early if required env vars are missing
 required_vars = [
     "LASTFM_API_KEY", "LASTFM_API_SECRET", "LASTFM_USERNAME", 
@@ -79,7 +80,7 @@ def save_state(state):
         json.dump(state, f, indent=2)
 
 # ====== LAST.FM API ======
-def get_lastfm_top_tracks(period='7day', limit=10):
+def get_lastfm_top_tracks(period='7day', limit=TOPTRACK_NUMBER):
     """
     Get top tracks from Last.fm
     

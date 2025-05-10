@@ -75,6 +75,8 @@ NIGHT_IMAGE_PATH = os.getenv("NIGHT_IMAGE_PATH", "images/night.jpg")
 MORNING_DURATION = float(os.getenv("MORNING_DURATION", "3"))
 # How long before sunset evening starts (in hours)
 EVENING_DURATION = float(os.getenv("EVENING_DURATION", "2"))
+# How long after sunset night starts (in hours)
+NIGHT_DURATION = float(os.getenv("NIGHT_DURATION", "1"))
 
 # Timezone adjustment (for servers running in UTC but calculating times for BST/local timezone)
 # Set to 1 for BST (summer time), 0 for GMT (winter time)
@@ -336,7 +338,8 @@ def calculate_phase_times():
     morning_start = sunrise
     day_start = sunrise + datetime.timedelta(hours=MORNING_DURATION)
     evening_start = sunset - datetime.timedelta(hours=EVENING_DURATION)
-    night_start = sunset
+    # Added NIGHT_DURATION: night starts some time after sunset
+    night_start = sunset + datetime.timedelta(hours=NIGHT_DURATION)
     
     return {
         'morning': morning_start,
@@ -728,6 +731,7 @@ def main():
         logger.info(f"Location: London (Latitude: {LATITUDE}, Longitude: {LONGITUDE})")
         logger.info(f"Morning Duration: {MORNING_DURATION} hours after sunrise")
         logger.info(f"Evening Duration: {EVENING_DURATION} hours before sunset")
+        logger.info(f"Night Duration: {NIGHT_DURATION} hours after sunset")
         
     if TIME_OFFSET != 0:
         logger.info(f"Time offset: {TIME_OFFSET:+.1f} hours (adjusting for timezone differences)")

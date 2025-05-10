@@ -451,15 +451,25 @@ def schedule_phase_changes(phase_times):
     phases = ['morning', 'day', 'evening', 'night']
     now = get_now_with_tzinfo()
     
+    # Create phase times adjusted for server time zone
+    if TIME_OFFSET != 0:
+        offset = datetime.timedelta(hours=-TIME_OFFSET)  # Negative to reverse the offset
+        adjusted_phase_times = {}
+        for phase, time in phase_times.items():
+            adjusted_phase_times[phase] = time + offset
+    else:
+        adjusted_phase_times = phase_times
+    
     for phase in phases:
-        time = phase_times[phase]
+        time = adjusted_phase_times[phase]
         
         # Ensure the time is timezone-aware
         time = ensure_timezone_aware(time)
         
         # Only schedule if the time is in the future
         if time > now:
-            logger.info(f"Scheduling {phase} cover change for {time.strftime('%Y-%m-%d %H:%M')}")
+            logger.info(f"Scheduling {phase} cover change for {time.strftime('%Y-%m-%d %H:%M')} (server time)")
+            logger.info(f"This corresponds to {phase_times[phase].strftime('%Y-%m-%d %H:%M')} in local time")
             
             # Use a function instead of a lambda to avoid closure issues
             scheduler.add_job(

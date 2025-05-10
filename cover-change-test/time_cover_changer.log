@@ -106,3 +106,113 @@ https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f61
 2025-05-10 19:25:19,369 - INFO - Script terminated by user. Shutting down scheduler...
 2025-05-10 19:25:19,369 - INFO - Scheduler has been shut down
 2025-05-10 19:25:19,370 - INFO - Bye!
+2025-05-10 19:36:55,279 - INFO - Morning image path: /Users/jacob/spotify/cover-change-test/images/morning.jpg
+2025-05-10 19:36:55,279 - INFO - Day image path: /Users/jacob/spotify/cover-change-test/images/day.jpg
+2025-05-10 19:36:55,279 - INFO - Evening image path: /Users/jacob/spotify/cover-change-test/images/evening.jpg
+2025-05-10 19:36:55,279 - INFO - Night image path: /Users/jacob/spotify/cover-change-test/images/night.jpg
+2025-05-10 19:36:55,279 - INFO - No time offset applied (using server timezone directly)
+2025-05-10 19:36:55,282 - INFO - 
+==================================================
+2025-05-10 19:36:55,282 - INFO - Starting Four-Phase Playlist Cover Changer
+2025-05-10 19:36:55,282 - INFO - Target Playlist ID: 3njwORmiAzQ6xZEt70zBqV
+2025-05-10 19:36:55,282 - INFO - Location: London (Latitude: 51.5074, Longitude: -0.1278)
+2025-05-10 19:36:55,282 - INFO - Morning Duration: 3.0 hours after sunrise
+2025-05-10 19:36:55,282 - INFO - Evening Duration: 2.0 hours before sunset
+2025-05-10 19:36:55,282 - INFO - ==================================================
+
+2025-05-10 19:36:55,282 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=ugc-image-upload+playlist-modify-public+playlist-modify-private
+2025-05-10 19:36:55,655 - INFO - Target Playlist: 'drylight' (owned by jacob stokes)
+2025-05-10 19:36:56,290 - INFO - Today's sunrise in London: 05:13
+2025-05-10 19:36:56,290 - INFO - Today's sunset in London: 20:40
+2025-05-10 19:36:56,291 - INFO - Today's phase transition times:
+2025-05-10 19:36:56,291 - INFO -   Morning: 05:13
+2025-05-10 19:36:56,291 - INFO -   Day: 08:13
+2025-05-10 19:36:56,291 - INFO -   Evening: 18:40
+2025-05-10 19:36:56,291 - INFO -   Night: 20:40
+2025-05-10 19:36:56,899 - INFO - Today's sunrise in London: 05:13
+2025-05-10 19:36:56,900 - INFO - Today's sunset in London: 20:40
+2025-05-10 19:36:56,901 - INFO - Current server time: 19:36:56
+2025-05-10 19:36:56,901 - INFO - Phase times (adjusted for server timezone): Morning: 05:13:44, Day: 08:13:44, Evening: 18:40:06, Night: 20:40:06
+2025-05-10 19:36:56,901 - INFO - Determined phase: EVENING
+2025-05-10 19:36:56,901 - INFO - Current phase: evening
+2025-05-10 19:36:56,901 - INFO - Changing to EVENING cover
+2025-05-10 19:36:56,903 - INFO - Loaded state: evening (set at 2025-05-10T19:25:03.178416)
+2025-05-10 19:36:56,903 - INFO - Already using evening cover, no change needed
+2025-05-10 19:36:57,514 - INFO - Today's sunrise in London: 05:13
+2025-05-10 19:36:57,514 - INFO - Today's sunset in London: 20:40
+2025-05-10 19:36:57,515 - INFO - Skipping scheduling morning cover change as time 05:13 has already passed
+2025-05-10 19:36:57,516 - INFO - Skipping scheduling day cover change as time 08:13 has already passed
+2025-05-10 19:36:57,516 - INFO - Skipping scheduling evening cover change as time 18:40 has already passed
+2025-05-10 19:36:57,516 - INFO - Scheduling night cover change for 2025-05-10 20:40
+2025-05-10 19:36:57,520 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-10 19:36:57,520 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-10 19:36:57,520 - INFO - Scheduled next calculation for: 2025-05-11 00:01
+2025-05-10 19:36:57,520 - INFO - Starting scheduler
+2025-05-10 19:36:57,522 - INFO - Added job "change_cover_job" to job store "default"
+2025-05-10 19:36:57,522 - INFO - Added job "calculate_times_for_tomorrow" to job store "default"
+2025-05-10 19:36:57,522 - INFO - Scheduler started
+2025-05-10 19:36:57,523 - INFO - Scheduled jobs (2):
+2025-05-10 19:36:57,523 - INFO -   Job ID: night, Next run: 2025-05-10 20:40:06+01:00
+2025-05-10 19:36:57,523 - INFO -   Job ID: recalculate, Next run: 2025-05-11 00:01:00+01:00
+2025-05-10 19:37:16,933 - INFO - Script terminated by user. Shutting down scheduler...
+2025-05-10 19:37:16,937 - INFO - Scheduler has been shut down
+2025-05-10 19:37:16,951 - INFO - Bye!
+2025-05-10 19:37:27,451 - INFO - Morning image path: /Users/jacob/spotify/cover-change-test/images/morning.jpg
+2025-05-10 19:37:27,451 - INFO - Day image path: /Users/jacob/spotify/cover-change-test/images/day.jpg
+2025-05-10 19:37:27,451 - INFO - Evening image path: /Users/jacob/spotify/cover-change-test/images/evening.jpg
+2025-05-10 19:37:27,451 - INFO - Night image path: /Users/jacob/spotify/cover-change-test/images/night.jpg
+2025-05-10 19:37:27,451 - INFO - No time offset applied (using server timezone directly)
+2025-05-10 19:37:27,453 - INFO - 
+==================================================
+2025-05-10 19:37:27,453 - INFO - Starting Four-Phase Playlist Cover Changer
+2025-05-10 19:37:27,453 - INFO - Target Playlist ID: 3njwORmiAzQ6xZEt70zBqV
+2025-05-10 19:37:27,453 - INFO - Location: London (Latitude: 51.5074, Longitude: -0.1278)
+2025-05-10 19:37:27,453 - INFO - Morning Duration: 3.0 hours after sunrise
+2025-05-10 19:37:27,453 - INFO - Evening Duration: 2.0 hours before sunset
+2025-05-10 19:37:27,453 - INFO - ==================================================
+
+2025-05-10 19:37:27,453 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=ugc-image-upload+playlist-modify-public+playlist-modify-private
+2025-05-10 19:37:27,768 - INFO - Target Playlist: 'drylight' (owned by jacob stokes)
+2025-05-10 19:37:28,385 - INFO - Today's sunrise in London: 05:13
+2025-05-10 19:37:28,385 - INFO - Today's sunset in London: 20:40
+2025-05-10 19:37:28,386 - INFO - Today's phase transition times:
+2025-05-10 19:37:28,386 - INFO -   Morning: 05:13
+2025-05-10 19:37:28,386 - INFO -   Day: 08:13
+2025-05-10 19:37:28,386 - INFO -   Evening: 18:40
+2025-05-10 19:37:28,386 - INFO -   Night: 20:40
+2025-05-10 19:37:29,009 - INFO - Today's sunrise in London: 05:13
+2025-05-10 19:37:29,009 - INFO - Today's sunset in London: 20:40
+2025-05-10 19:37:29,010 - INFO - Current server time: 19:37:28
+2025-05-10 19:37:29,010 - INFO - Phase times (adjusted for server timezone): Morning: 05:13:44, Day: 08:13:44, Evening: 18:40:06, Night: 20:40:06
+2025-05-10 19:37:29,010 - INFO - Determined phase: EVENING
+2025-05-10 19:37:29,010 - INFO - Current phase: evening
+2025-05-10 19:37:29,010 - INFO - Changing to EVENING cover
+2025-05-10 19:37:29,303 - INFO - Changing cover for playlist 'drylight' using /Users/jacob/spotify/cover-change-test/images/evening.jpg
+2025-05-10 19:37:29,306 - INFO - Image size: 165.92 KB
+2025-05-10 19:37:29,307 - INFO - Successfully encoded image (base64 length: 226544, size: 221.23 KB)
+2025-05-10 19:37:29,307 - INFO - Uploading cover image to Spotify...
+2025-05-10 19:37:31,544 - INFO - Successfully updated cover image for playlist 'drylight'
+2025-05-10 19:37:32,165 - INFO - Today's sunrise in London: 05:13
+2025-05-10 19:37:32,165 - INFO - Today's sunset in London: 20:40
+2025-05-10 19:37:32,166 - INFO - Saved state: evening
+2025-05-10 19:37:32,770 - INFO - Today's sunrise in London: 05:13
+2025-05-10 19:37:32,773 - INFO - Today's sunset in London: 20:40
+2025-05-10 19:37:32,775 - INFO - Skipping scheduling morning cover change as time 05:13 has already passed
+2025-05-10 19:37:32,775 - INFO - Skipping scheduling day cover change as time 08:13 has already passed
+2025-05-10 19:37:32,775 - INFO - Skipping scheduling evening cover change as time 18:40 has already passed
+2025-05-10 19:37:32,775 - INFO - Scheduling night cover change for 2025-05-10 20:40
+2025-05-10 19:37:32,779 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-10 19:37:32,780 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-10 19:37:32,780 - INFO - Scheduled next calculation for: 2025-05-11 00:01
+2025-05-10 19:37:32,780 - INFO - Starting scheduler
+2025-05-10 19:37:32,783 - INFO - Added job "change_cover_job" to job store "default"
+2025-05-10 19:37:32,783 - INFO - Added job "calculate_times_for_tomorrow" to job store "default"
+2025-05-10 19:37:32,783 - INFO - Scheduler started
+2025-05-10 19:37:32,783 - INFO - Scheduled jobs (2):
+2025-05-10 19:37:32,783 - INFO -   Job ID: night, Next run: 2025-05-10 20:40:06+01:00
+2025-05-10 19:37:32,783 - INFO -   Job ID: recalculate, Next run: 2025-05-11 00:01:00+01:00
+2025-05-10 19:37:36,519 - INFO - Script terminated by user. Shutting down scheduler...
+2025-05-10 19:37:36,520 - INFO - Scheduler has been shut down
+2025-05-10 19:37:36,520 - INFO - Bye!

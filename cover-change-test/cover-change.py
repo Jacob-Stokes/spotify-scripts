@@ -347,24 +347,49 @@ def calculate_phase_times():
 
 def get_current_phase():
     """
-    Determine the current phase based on time
+    Determine the current phase based on time with timezone awareness
     
     Returns:
         str: 'morning', 'day', 'evening', or 'night'
     """
+    # Get current time with timezone info
     now = get_now_with_tzinfo()
+    
+    # Get phase times (these already have TIME_OFFSET applied)
     phase_times = calculate_phase_times()
     
+    # For more accurate comparison, we need to remove the TIME_OFFSET
+    # from the phase times when comparing with server time
+    if TIME_OFFSET != 0:
+        offset = datetime.timedelta(hours=-TIME_OFFSET)  # Negative to reverse the offset
+        adjusted_phase_times = {}
+        for phase, time in phase_times.items():
+            adjusted_phase_times[phase] = time + offset
+    else:
+        adjusted_phase_times = phase_times
+    
+    # Log for debugging
+    logger.info(f"Current server time: {now.strftime('%H:%M:%S')}")
+    logger.info(f"Phase times (adjusted for server timezone): Morning: {adjusted_phase_times['morning'].strftime('%H:%M:%S')}, " + 
+               f"Day: {adjusted_phase_times['day'].strftime('%H:%M:%S')}, " + 
+               f"Evening: {adjusted_phase_times['evening'].strftime('%H:%M:%S')}, " + 
+               f"Night: {adjusted_phase_times['night'].strftime('%H:%M:%S')}")
+    
     # Determine current phase
-    if now < phase_times['morning']:
+    if now < adjusted_phase_times['morning']:
+        logger.info("Determined phase: NIGHT (before morning)")
         return 'night'  # Before sunrise, it's still night
-    elif now < phase_times['day']:
+    elif now < adjusted_phase_times['day']:
+        logger.info("Determined phase: MORNING")
         return 'morning'
-    elif now < phase_times['evening']:
+    elif now < adjusted_phase_times['evening']:
+        logger.info("Determined phase: DAY")
         return 'day'
-    elif now < phase_times['night']:
+    elif now < adjusted_phase_times['night']:
+        logger.info("Determined phase: EVENING")
         return 'evening'
     else:
+        logger.info("Determined phase: NIGHT (after night time)")
         return 'night'
 
 def calculate_times_for_tomorrow():

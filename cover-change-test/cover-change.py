@@ -76,6 +76,10 @@ MORNING_DURATION = float(os.getenv("MORNING_DURATION", "3"))
 # How long before sunset evening starts (in hours)
 EVENING_DURATION = float(os.getenv("EVENING_DURATION", "2"))
 
+# Timezone adjustment (for servers running in UTC but calculating times for BST/local timezone)
+# Set to 1 for BST (summer time), 0 for GMT (winter time)
+TIME_OFFSET = float(os.getenv("TIME_OFFSET", "1"))
+
 # Location settings (London)
 LATITUDE = 51.5074
 LONGITUDE = -0.1278
@@ -134,6 +138,14 @@ logger.info(f"Morning image path: {MORNING_IMAGE_PATH}")
 logger.info(f"Day image path: {DAY_IMAGE_PATH}")
 logger.info(f"Evening image path: {EVENING_IMAGE_PATH}")
 logger.info(f"Night image path: {NIGHT_IMAGE_PATH}")
+
+# Show timezone configuration
+if TIME_OFFSET > 0:
+    logger.info(f"Time offset: +{TIME_OFFSET} hours (adjusting for BST/summer time)")
+elif TIME_OFFSET < 0:
+    logger.info(f"Time offset: {TIME_OFFSET} hours")
+else:
+    logger.info("No time offset applied (using server timezone directly)")
 
 # Fail early if required env vars are missing
 required_vars = [
@@ -232,6 +244,13 @@ def get_sun_times():
             sunrise_local = sunrise_utc.astimezone(local_timezone)
             sunset_local = sunset_utc.astimezone(local_timezone)
             
+            # Apply configured time offset
+            if TIME_OFFSET != 0:
+                offset = datetime.timedelta(hours=TIME_OFFSET)
+                sunrise_local = sunrise_local + offset
+                sunset_local = sunset_local + offset
+                logger.info(f"Applied time offset adjustment ({TIME_OFFSET:+.1f} hours) to sunrise/sunset times")
+            
             logger.info(f"Today's sunrise in London: {sunrise_local.strftime('%H:%M')}")
             logger.info(f"Today's sunset in London: {sunset_local.strftime('%H:%M')}")
             
@@ -274,8 +293,15 @@ def get_sun_times():
     sunrise_time = sunrise_time.replace(tzinfo=local_timezone)
     sunset_time = sunset_time.replace(tzinfo=local_timezone)
     
-    logger.info(f"Using fallback sunrise time for London: {sunrise_time_str}")
-    logger.info(f"Using fallback sunset time for London: {sunset_time_str}")
+    # Apply configured time offset for fallback times too
+    if TIME_OFFSET != 0:
+        offset = datetime.timedelta(hours=TIME_OFFSET)
+        sunrise_time = sunrise_time + offset
+        sunset_time = sunset_time + offset
+        logger.info(f"Applied time offset adjustment ({TIME_OFFSET:+.1f} hours) to fallback sunrise/sunset times")
+    
+    logger.info(f"Using fallback sunrise time for London: {sunrise_time.strftime('%H:%M')}")
+    logger.info(f"Using fallback sunset time for London: {sunset_time.strftime('%H:%M')}")
     
     return sunrise_time, sunset_time
 
@@ -288,11 +314,20 @@ def calculate_phase_times():
     """
     # If in debug mode, use the provided times
     if DEBUG_MODE and DEBUG_TIMES:
-        # Make sure debug times are timezone-aware
-        aware_times = {}
-        for phase, time in DEBUG_TIMES.items():
-            aware_times[phase] = ensure_timezone_aware(time)
-        return aware_times
+        # Apply the time offset to debug times if needed
+        if TIME_OFFSET != 0 and not DEBUG_MODE:
+            offset = datetime.timedelta(hours=TIME_OFFSET)
+            aware_times = {}
+            for phase, time in DEBUG_TIMES.items():
+                aware_time = ensure_timezone_aware(time)
+                aware_times[phase] = aware_time + offset
+            return aware_times
+        else:
+            # Make sure debug times are timezone-aware
+            aware_times = {}
+            for phase, time in DEBUG_TIMES.items():
+                aware_times[phase] = ensure_timezone_aware(time)
+            return aware_times
         
     # Otherwise, calculate real times based on sunrise/sunset
     sunrise, sunset = get_sun_times()
@@ -349,6 +384,12 @@ def calculate_times_for_tomorrow():
         for phase, time in DEBUG_TIMES.items():
             aware_time = ensure_timezone_aware(time)
             tomorrow_phases[phase] = aware_time + datetime.timedelta(days=1)
+            
+        # Apply time offset if configured
+        if TIME_OFFSET != 0 and not DEBUG_MODE:
+            offset = datetime.timedelta(hours=TIME_OFFSET)
+            for phase in tomorrow_phases:
+                tomorrow_phases[phase] = tomorrow_phases[phase] + offset
     else:
         # Calculate real times based on sunrise/sunset
         today_phases = calculate_phase_times()
@@ -570,7 +611,8 @@ def save_state(phase):
             'timestamp': datetime.datetime.now().isoformat(),
             'playlist_id': PLAYLIST_ID,
             'phase_times': times_iso,
-            'debug_mode': DEBUG_MODE
+            'debug_mode': DEBUG_MODE,
+            'time_offset': TIME_OFFSET
         }
         
         with open(STATE_FILE, 'w') as f:
@@ -643,12 +685,19 @@ def main():
     logger.info("\n" + "="*50)
     logger.info("Starting Four-Phase Playlist Cover Changer")
     logger.info(f"Target Playlist ID: {PLAYLIST_ID}")
+    
+    # Log configuration details
     if DEBUG_MODE:
         logger.info("RUNNING IN DEBUG MODE with custom times")
     else:
         logger.info(f"Location: London (Latitude: {LATITUDE}, Longitude: {LONGITUDE})")
         logger.info(f"Morning Duration: {MORNING_DURATION} hours after sunrise")
         logger.info(f"Evening Duration: {EVENING_DURATION} hours before sunset")
+        
+    if TIME_OFFSET != 0:
+        logger.info(f"Time offset: {TIME_OFFSET:+.1f} hours (adjusting for timezone differences)")
+        if TIME_OFFSET == 1:
+            logger.info("This offset is likely compensating for BST (summer time) while server runs on UTC")
     logger.info("="*50 + "\n")
     
     # Set up scheduler event handlers for better debugging

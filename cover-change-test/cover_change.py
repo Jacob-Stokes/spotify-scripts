@@ -396,43 +396,39 @@ def get_current_phase():
         return 'night'
 
 def calculate_times_for_tomorrow():
-    """Calculate times for tomorrow and schedule the changes"""
+    """Calculate times for the current day and schedule the changes"""
     # Clear any existing jobs
     scheduler.remove_all_jobs()
     
-    # Get tomorrow's date
+    # Get TODAY'S date (not tomorrow)
     now = get_now_with_tzinfo()
-    tomorrow = now.date() + datetime.timedelta(days=1)
-    logger.info(f"Calculating times for tomorrow ({tomorrow})")
+    today = now.date()
+    logger.info(f"Calculating times for today ({today})")
     
-    # Calculate tomorrow's phase times
+    # Calculate today's phase times
     if DEBUG_MODE and DEBUG_TIMES:
-        # In debug mode, add one day to all times
-        tomorrow_phases = {}
+        # In debug mode, use the debug times for today
+        today_phases = {}
         for phase, time in DEBUG_TIMES.items():
             aware_time = ensure_timezone_aware(time)
-            tomorrow_phases[phase] = aware_time + datetime.timedelta(days=1)
+            # Don't add an extra day
+            today_phases[phase] = aware_time
             
         # Apply time offset if configured
         if TIME_OFFSET != 0 and not DEBUG_MODE:
             offset = datetime.timedelta(hours=TIME_OFFSET)
-            for phase in tomorrow_phases:
-                tomorrow_phases[phase] = tomorrow_phases[phase] + offset
+            for phase in today_phases:
+                today_phases[phase] = today_phases[phase] + offset
     else:
         # Calculate real times based on sunrise/sunset
         today_phases = calculate_phase_times()
-        
-        # Create tomorrow's phase times
-        tomorrow_phases = {}
-        for phase, time in today_phases.items():
-            tomorrow_time = datetime.datetime.combine(tomorrow, time.time())
-            tomorrow_phases[phase] = tomorrow_time.replace(tzinfo=time.tzinfo)
     
     # Schedule cover changes
-    schedule_phase_changes(tomorrow_phases)
+    schedule_phase_changes(today_phases)
     
-    # Also schedule the recalculation for tomorrow night
-    recalculation_time = datetime.datetime.combine(tomorrow, datetime.time(23, 0))
+    # Schedule the next recalculation for midnight tonight
+    tomorrow = today + datetime.timedelta(days=1)
+    recalculation_time = datetime.datetime.combine(tomorrow, datetime.time(0, 1))  # Just after midnight
     recalculation_time = recalculation_time.replace(tzinfo=now.tzinfo)
         
     scheduler.add_job(
@@ -445,7 +441,7 @@ def calculate_times_for_tomorrow():
     )
     
     # Log all scheduled times
-    for phase, time in tomorrow_phases.items():
+    for phase, time in today_phases.items():
         logger.info(f"Scheduled {phase} cover change for: {time.strftime('%Y-%m-%d %H:%M')}")
     logger.info(f"Scheduled next calculation for: {recalculation_time.strftime('%Y-%m-%d %H:%M')}")
 

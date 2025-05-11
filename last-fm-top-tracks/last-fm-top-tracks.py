@@ -80,7 +80,7 @@ def save_state(state):
         json.dump(state, f, indent=2)
 
 # ====== LAST.FM API ======
-def get_lastfm_top_tracks(period='7day', limit=TOPTRACK_NUMBER):
+def get_lastfm_top_tracks(period='1month', limit=TOPTRACK_NUMBER):
     """
     Get top tracks from Last.fm
     

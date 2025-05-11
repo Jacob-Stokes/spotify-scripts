@@ -1,0 +1,350 @@
+2025-05-11 10:38:15,877 - INFO - 
+==================================================
+2025-05-11 10:38:15,877 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:38:15,877 - INFO - Check interval: 3600 seconds
+2025-05-11 10:38:15,877 - INFO - Retention period: 7 days
+2025-05-11 10:38:15,877 - INFO - ==================================================
+
+2025-05-11 10:38:15,877 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:38:15,878 - INFO - User authentication requires interaction with your web browser. Once you enter your credentials and give authorization, you will be redirected to a url.  Paste that url you were directed to to complete the authorization.
+2025-05-11 10:38:15,878 - WARNING - Using 'localhost' as a redirect URI is being deprecated. Use a loopback IP address such as 127.0.0.1 to ensure your app remains functional.
+2025-05-11 10:38:16,077 - INFO - Opened https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public in your browser
+2025-05-11 10:38:18,565 - INFO - ==================================================
+2025-05-11 10:38:18,566 - INFO - Updating Noteworthy playlists
+2025-05-11 10:38:18,566 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:38:18,566 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:38:18,566 - INFO - Retention period: 7 days
+2025-05-11 10:38:18,566 - INFO - ==================================================
+2025-05-11 10:38:18,755 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:38:18,756 - INFO - Total tracks: 13
+2025-05-11 10:38:18,913 - ERROR - Error getting tracks from playlist 2PlLnuqwpdkq9KIoyVS7Dl: 'next'
+2025-05-11 10:38:19,142 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:38:19,142 - INFO - Total tracks: 17
+2025-05-11 10:38:19,271 - ERROR - Error getting tracks from playlist 4sWyijmXwRbzM2HxUoFtJH: 'next'
+2025-05-11 10:38:19,273 - INFO - Saved state with 0 tracked tracks
+2025-05-11 10:38:19,274 - INFO - --------------------------------------------------
+2025-05-11 10:38:19,274 - INFO - Summary:
+2025-05-11 10:38:19,274 - INFO -   Noteworthy playlist: 0 tracks
+2025-05-11 10:38:19,274 - INFO -   Archive playlist: 0 tracks
+2025-05-11 10:38:19,274 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:38:19,274 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:38:19,274 - INFO - --------------------------------------------------
+2025-05-11 10:38:19,275 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:38:51,434 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:38:52,289 - INFO - 
+==================================================
+2025-05-11 10:38:52,289 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:38:52,289 - INFO - Check interval: 3600 seconds
+2025-05-11 10:38:52,289 - INFO - Retention period: 7 days
+2025-05-11 10:38:52,290 - INFO - ==================================================
+
+2025-05-11 10:38:52,290 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:38:52,692 - INFO - ==================================================
+2025-05-11 10:38:52,693 - INFO - Updating Noteworthy playlists
+2025-05-11 10:38:52,693 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:38:52,693 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:38:52,693 - INFO - Retention period: 7 days
+2025-05-11 10:38:52,693 - INFO - ==================================================
+2025-05-11 10:38:52,694 - INFO - Loaded state with 0 tracked tracks
+2025-05-11 10:38:52,836 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:38:52,836 - INFO - Total tracks: 14
+2025-05-11 10:38:52,944 - ERROR - Error getting tracks from playlist 2PlLnuqwpdkq9KIoyVS7Dl: 'next'
+2025-05-11 10:38:53,160 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:38:53,160 - INFO - Total tracks: 17
+2025-05-11 10:38:53,355 - ERROR - Error getting tracks from playlist 4sWyijmXwRbzM2HxUoFtJH: 'next'
+2025-05-11 10:38:53,358 - INFO - Saved state with 0 tracked tracks
+2025-05-11 10:38:53,360 - INFO - --------------------------------------------------
+2025-05-11 10:38:53,360 - INFO - Summary:
+2025-05-11 10:38:53,360 - INFO -   Noteworthy playlist: 0 tracks
+2025-05-11 10:38:53,360 - INFO -   Archive playlist: 0 tracks
+2025-05-11 10:38:53,361 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:38:53,361 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:38:53,361 - INFO - --------------------------------------------------
+2025-05-11 10:38:53,361 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:41:32,229 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:41:33,139 - INFO - 
+==================================================
+2025-05-11 10:41:33,139 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:41:33,139 - INFO - Check interval: 3600 seconds
+2025-05-11 10:41:33,139 - INFO - Retention period: 7 days
+2025-05-11 10:41:33,139 - INFO - ==================================================
+
+2025-05-11 10:41:33,139 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:41:33,546 - INFO - ==================================================
+2025-05-11 10:41:33,548 - INFO - Updating Noteworthy playlists
+2025-05-11 10:41:33,548 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:41:33,548 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:41:33,548 - INFO - Retention period: 7 days
+2025-05-11 10:41:33,548 - INFO - ==================================================
+2025-05-11 10:41:33,549 - INFO - Loaded state with 0 tracked tracks
+2025-05-11 10:41:33,765 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:41:33,765 - INFO - Total tracks: 14
+2025-05-11 10:41:33,913 - INFO - Retrieved 14 tracks from playlist ' '
+2025-05-11 10:41:34,062 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:41:34,063 - INFO - Total tracks: 17
+2025-05-11 10:41:34,216 - INFO - Retrieved 17 tracks from playlist '/!a'
+2025-05-11 10:41:34,218 - INFO - New track found in Noteworthy: 'BRAND NEW BITCH' by COBRAH
+2025-05-11 10:41:34,218 - INFO - New track found in Noteworthy: 'I Confess' by Land of the Loops
+2025-05-11 10:41:34,218 - INFO - Track will be added to Archive: 'I Confess'
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'Bon Bon' by Fcukers
+2025-05-11 10:41:34,219 - INFO - Track will be added to Archive: 'Bon Bon'
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'BRAND NEW' by LSDXOXO
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'B and O Blues' by Eola
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'New World Now' by Le Reste
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'Heart of Gold' by Fiona Apple
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'Since I Was a Boy' by True Strays
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'Cocaine' by Spalding Rockwell
+2025-05-11 10:41:34,219 - INFO - New track found in Noteworthy: 'The Milky Sea' by Jefre Cantu-Ledesma
+2025-05-11 10:41:34,220 - INFO - New track found in Noteworthy: 'Halo' by Maria Somerville
+2025-05-11 10:41:34,220 - INFO - New track found in Noteworthy: 'Violet' by Maria Somerville
+2025-05-11 10:41:34,220 - INFO - New track found in Noteworthy: 'FRONT LEFT SPEAKER' by deBasement
+2025-05-11 10:41:34,220 - INFO - Track will be added to Archive: 'FRONT LEFT SPEAKER'
+2025-05-11 10:41:34,220 - INFO - New track found in Noteworthy: 'Digital Gravestone' by Deradoorian
+2025-05-11 10:41:34,220 - INFO - Track will be added to Archive: 'Digital Gravestone'
+2025-05-11 10:41:34,337 - INFO - Added 4 new tracks to Archive playlist
+2025-05-11 10:41:34,340 - INFO - Saved state with 14 tracked tracks
+2025-05-11 10:41:34,340 - INFO - --------------------------------------------------
+2025-05-11 10:41:34,340 - INFO - Summary:
+2025-05-11 10:41:34,340 - INFO -   Noteworthy playlist: 14 tracks
+2025-05-11 10:41:34,340 - INFO -   Archive playlist: 17 tracks
+2025-05-11 10:41:34,340 - INFO -   New tracks added to Archive: 4
+2025-05-11 10:41:34,340 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:41:34,340 - INFO - --------------------------------------------------
+2025-05-11 10:41:34,340 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:41:47,265 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:41:48,003 - INFO - 
+==================================================
+2025-05-11 10:41:48,003 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:41:48,003 - INFO - Check interval: 3600 seconds
+2025-05-11 10:41:48,003 - INFO - Retention period: 7 days
+2025-05-11 10:41:48,003 - INFO - ==================================================
+
+2025-05-11 10:41:48,003 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:41:48,443 - INFO - ==================================================
+2025-05-11 10:41:48,446 - INFO - Updating Noteworthy playlists
+2025-05-11 10:41:48,446 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:41:48,446 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:41:48,446 - INFO - Retention period: 7 days
+2025-05-11 10:41:48,446 - INFO - ==================================================
+2025-05-11 10:41:48,447 - INFO - Loaded state with 14 tracked tracks
+2025-05-11 10:41:48,598 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:41:48,599 - INFO - Total tracks: 14
+2025-05-11 10:41:48,736 - INFO - Retrieved 14 tracks from playlist ' '
+2025-05-11 10:41:48,902 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:41:48,902 - INFO - Total tracks: 21
+2025-05-11 10:41:49,108 - INFO - Retrieved 21 tracks from playlist '/!a'
+2025-05-11 10:41:49,111 - INFO - Saved state with 14 tracked tracks
+2025-05-11 10:41:49,111 - INFO - --------------------------------------------------
+2025-05-11 10:41:49,111 - INFO - Summary:
+2025-05-11 10:41:49,111 - INFO -   Noteworthy playlist: 14 tracks
+2025-05-11 10:41:49,111 - INFO -   Archive playlist: 21 tracks
+2025-05-11 10:41:49,111 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:41:49,111 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:41:49,111 - INFO - --------------------------------------------------
+2025-05-11 10:41:49,111 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:42:00,154 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:42:00,774 - INFO - 
+==================================================
+2025-05-11 10:42:00,774 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:42:00,774 - INFO - Check interval: 3600 seconds
+2025-05-11 10:42:00,774 - INFO - Retention period: 7 days
+2025-05-11 10:42:00,774 - INFO - ==================================================
+
+2025-05-11 10:42:00,774 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:42:01,159 - INFO - ==================================================
+2025-05-11 10:42:01,159 - INFO - Updating Noteworthy playlists
+2025-05-11 10:42:01,159 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:42:01,159 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:42:01,159 - INFO - Retention period: 7 days
+2025-05-11 10:42:01,159 - INFO - ==================================================
+2025-05-11 10:42:01,162 - INFO - Loaded state with 14 tracked tracks
+2025-05-11 10:42:01,360 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:42:01,361 - INFO - Total tracks: 13
+2025-05-11 10:42:01,512 - INFO - Retrieved 13 tracks from playlist ' '
+2025-05-11 10:42:01,712 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:42:01,713 - INFO - Total tracks: 21
+2025-05-11 10:42:01,951 - INFO - Retrieved 21 tracks from playlist '/!a'
+2025-05-11 10:42:01,952 - INFO - Saved state with 14 tracked tracks
+2025-05-11 10:42:01,952 - INFO - --------------------------------------------------
+2025-05-11 10:42:01,952 - INFO - Summary:
+2025-05-11 10:42:01,952 - INFO -   Noteworthy playlist: 13 tracks
+2025-05-11 10:42:01,952 - INFO -   Archive playlist: 21 tracks
+2025-05-11 10:42:01,953 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:42:01,953 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:42:01,953 - INFO - --------------------------------------------------
+2025-05-11 10:42:01,953 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:42:18,968 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:42:19,658 - INFO - 
+==================================================
+2025-05-11 10:42:19,658 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:42:19,658 - INFO - Check interval: 3600 seconds
+2025-05-11 10:42:19,658 - INFO - Retention period: 7 days
+2025-05-11 10:42:19,658 - INFO - ==================================================
+
+2025-05-11 10:42:19,658 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:42:20,307 - INFO - ==================================================
+2025-05-11 10:42:20,308 - INFO - Updating Noteworthy playlists
+2025-05-11 10:42:20,308 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:42:20,308 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:42:20,308 - INFO - Retention period: 7 days
+2025-05-11 10:42:20,308 - INFO - ==================================================
+2025-05-11 10:42:20,310 - INFO - Loaded state with 14 tracked tracks
+2025-05-11 10:42:20,486 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:42:20,486 - INFO - Total tracks: 13
+2025-05-11 10:42:20,678 - INFO - Retrieved 13 tracks from playlist ' '
+2025-05-11 10:42:20,935 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:42:20,935 - INFO - Total tracks: 20
+2025-05-11 10:42:21,156 - INFO - Retrieved 20 tracks from playlist '/!a'
+2025-05-11 10:42:21,159 - INFO - Saved state with 14 tracked tracks
+2025-05-11 10:42:21,159 - INFO - --------------------------------------------------
+2025-05-11 10:42:21,159 - INFO - Summary:
+2025-05-11 10:42:21,159 - INFO -   Noteworthy playlist: 13 tracks
+2025-05-11 10:42:21,159 - INFO -   Archive playlist: 20 tracks
+2025-05-11 10:42:21,159 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:42:21,159 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:42:21,159 - INFO - --------------------------------------------------
+2025-05-11 10:42:21,159 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:44:44,751 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:44:45,417 - INFO - 
+==================================================
+2025-05-11 10:44:45,417 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:44:45,417 - INFO - Check interval: 3600 seconds
+2025-05-11 10:44:45,417 - INFO - Retention period: 7 days
+2025-05-11 10:44:45,417 - INFO - ==================================================
+
+2025-05-11 10:44:45,418 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:44:45,832 - INFO - ==================================================
+2025-05-11 10:44:45,832 - INFO - Updating Noteworthy playlists
+2025-05-11 10:44:45,832 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:44:45,832 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:44:45,833 - INFO - Retention period: 7 days
+2025-05-11 10:44:45,833 - INFO - ==================================================
+2025-05-11 10:44:45,836 - INFO - Loaded state with 14 tracked tracks
+2025-05-11 10:44:46,061 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:44:46,061 - INFO - Total tracks: 13
+2025-05-11 10:44:46,192 - INFO - Retrieved 13 tracks from playlist ' '
+2025-05-11 10:44:46,573 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:44:46,573 - INFO - Total tracks: 20
+2025-05-11 10:44:46,739 - INFO - Retrieved 20 tracks from playlist '/!a'
+2025-05-11 10:44:46,740 - INFO - Removing track from state (no longer in Noteworthy): 'Digital Gravestone' by Deradoorian
+2025-05-11 10:44:46,742 - INFO - Saved state with 13 tracked tracks
+2025-05-11 10:44:46,743 - INFO - --------------------------------------------------
+2025-05-11 10:44:46,743 - INFO - Summary:
+2025-05-11 10:44:46,743 - INFO -   Noteworthy playlist: 13 tracks
+2025-05-11 10:44:46,743 - INFO -   Archive playlist: 20 tracks
+2025-05-11 10:44:46,743 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:44:46,743 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:44:46,743 - INFO -   Tracks removed from state: 1
+2025-05-11 10:44:46,743 - INFO - --------------------------------------------------
+2025-05-11 10:44:46,743 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:44:54,099 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:44:54,840 - INFO - 
+==================================================
+2025-05-11 10:44:54,841 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:44:54,841 - INFO - Check interval: 3600 seconds
+2025-05-11 10:44:54,841 - INFO - Retention period: 7 days
+2025-05-11 10:44:54,841 - INFO - ==================================================
+
+2025-05-11 10:44:54,841 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:44:55,265 - INFO - ==================================================
+2025-05-11 10:44:55,266 - INFO - Updating Noteworthy playlists
+2025-05-11 10:44:55,266 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:44:55,266 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:44:55,266 - INFO - Retention period: 7 days
+2025-05-11 10:44:55,266 - INFO - ==================================================
+2025-05-11 10:44:55,268 - INFO - Loaded state with 13 tracked tracks
+2025-05-11 10:44:55,418 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:44:55,418 - INFO - Total tracks: 13
+2025-05-11 10:44:55,550 - INFO - Retrieved 13 tracks from playlist ' '
+2025-05-11 10:44:55,738 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:44:55,738 - INFO - Total tracks: 21
+2025-05-11 10:44:55,913 - INFO - Retrieved 21 tracks from playlist '/!a'
+2025-05-11 10:44:55,915 - INFO - Saved state with 13 tracked tracks
+2025-05-11 10:44:55,915 - INFO - --------------------------------------------------
+2025-05-11 10:44:55,915 - INFO - Summary:
+2025-05-11 10:44:55,915 - INFO -   Noteworthy playlist: 13 tracks
+2025-05-11 10:44:55,916 - INFO -   Archive playlist: 21 tracks
+2025-05-11 10:44:55,916 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:44:55,916 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:44:55,916 - INFO -   Tracks removed from state: 0
+2025-05-11 10:44:55,916 - INFO - --------------------------------------------------
+2025-05-11 10:44:55,916 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:45:09,483 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:45:10,178 - INFO - 
+==================================================
+2025-05-11 10:45:10,178 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:45:10,178 - INFO - Check interval: 3600 seconds
+2025-05-11 10:45:10,178 - INFO - Retention period: 7 days
+2025-05-11 10:45:10,178 - INFO - ==================================================
+
+2025-05-11 10:45:10,178 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:45:10,604 - INFO - ==================================================
+2025-05-11 10:45:10,605 - INFO - Updating Noteworthy playlists
+2025-05-11 10:45:10,605 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:45:10,605 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:45:10,605 - INFO - Retention period: 7 days
+2025-05-11 10:45:10,606 - INFO - ==================================================
+2025-05-11 10:45:10,608 - INFO - Loaded state with 13 tracked tracks
+2025-05-11 10:45:10,801 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:45:10,801 - INFO - Total tracks: 14
+2025-05-11 10:45:10,945 - INFO - Retrieved 14 tracks from playlist ' '
+2025-05-11 10:45:11,198 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:45:11,199 - INFO - Total tracks: 20
+2025-05-11 10:45:12,784 - INFO - Retrieved 20 tracks from playlist '/!a'
+2025-05-11 10:45:12,785 - INFO - New track found in Noteworthy: 'frogsporn' by Mermaid Chunky
+2025-05-11 10:45:12,785 - INFO - Track will be added to Archive: 'frogsporn'
+2025-05-11 10:45:12,970 - INFO - Added 1 new tracks to Archive playlist
+2025-05-11 10:45:12,971 - INFO - Saved state with 14 tracked tracks
+2025-05-11 10:45:12,971 - INFO - --------------------------------------------------
+2025-05-11 10:45:12,971 - INFO - Summary:
+2025-05-11 10:45:12,971 - INFO -   Noteworthy playlist: 14 tracks
+2025-05-11 10:45:12,971 - INFO -   Archive playlist: 20 tracks
+2025-05-11 10:45:12,971 - INFO -   New tracks added to Archive: 1
+2025-05-11 10:45:12,971 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:45:12,971 - INFO -   Tracks removed from state: 0
+2025-05-11 10:45:12,971 - INFO - --------------------------------------------------
+2025-05-11 10:45:12,972 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:45:19,362 - INFO - Script terminated by user. Exiting...
+2025-05-11 10:45:19,943 - INFO - 
+==================================================
+2025-05-11 10:45:19,943 - INFO - Starting Noteworthy Playlist Manager
+2025-05-11 10:45:19,943 - INFO - Check interval: 3600 seconds
+2025-05-11 10:45:19,943 - INFO - Retention period: 7 days
+2025-05-11 10:45:19,943 - INFO - ==================================================
+
+2025-05-11 10:45:19,943 - INFO - Open this URL in your browser to authenticate with Spotify if needed:
+https://accounts.spotify.com/authorize?client_id=1ac3defbf6f1439fb933f7709a94f615&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=playlist-read-private+playlist-read-collaborative+playlist-modify-private+playlist-modify-public
+2025-05-11 10:45:20,322 - INFO - ==================================================
+2025-05-11 10:45:20,323 - INFO - Updating Noteworthy playlists
+2025-05-11 10:45:20,323 - INFO - Noteworthy: ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:45:20,323 - INFO - Archive: '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:45:20,323 - INFO - Retention period: 7 days
+2025-05-11 10:45:20,323 - INFO - ==================================================
+2025-05-11 10:45:20,326 - INFO - Loaded state with 14 tracked tracks
+2025-05-11 10:45:20,495 - INFO - Getting tracks from playlist ' ' (ID: 2PlLnuqwpdkq9KIoyVS7Dl)
+2025-05-11 10:45:20,495 - INFO - Total tracks: 13
+2025-05-11 10:45:20,645 - INFO - Retrieved 13 tracks from playlist ' '
+2025-05-11 10:45:20,826 - INFO - Getting tracks from playlist '/!a' (ID: 4sWyijmXwRbzM2HxUoFtJH)
+2025-05-11 10:45:20,826 - INFO - Total tracks: 21
+2025-05-11 10:45:21,034 - INFO - Retrieved 21 tracks from playlist '/!a'
+2025-05-11 10:45:21,035 - INFO - Removing track from state (no longer in Noteworthy): 'frogsporn' by Mermaid Chunky
+2025-05-11 10:45:21,037 - INFO - Saved state with 13 tracked tracks
+2025-05-11 10:45:21,037 - INFO - --------------------------------------------------
+2025-05-11 10:45:21,037 - INFO - Summary:
+2025-05-11 10:45:21,037 - INFO -   Noteworthy playlist: 13 tracks
+2025-05-11 10:45:21,037 - INFO -   Archive playlist: 21 tracks
+2025-05-11 10:45:21,038 - INFO -   New tracks added to Archive: 0
+2025-05-11 10:45:21,038 - INFO -   Old tracks removed from Noteworthy: 0
+2025-05-11 10:45:21,038 - INFO -   Tracks removed from state: 1
+2025-05-11 10:45:21,038 - INFO - --------------------------------------------------
+2025-05-11 10:45:21,038 - INFO - Waiting 3600 seconds until next check...
+2025-05-11 10:45:39,385 - INFO - Script terminated by user. Exiting...

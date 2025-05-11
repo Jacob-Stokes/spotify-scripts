@@ -39,6 +39,8 @@ SPOTIFY_SCOPE = os.getenv("SPOTIFY_SCOPE", "playlist-modify-public playlist-modi
 SPOTIFY_STATS_PLAYLIST_ID = os.getenv("SPOTIFY_STATS_PLAYLIST_ID")
 POLL_INTERVAL = int(os.getenv("LASTFM_STATS_POLL_INTERVAL", "3600"))  # Default: 1 hour
 STATE_FILE = os.getenv("LASTFM_STATS_STATE_FILE", "lastfm_stats_state.json")
+# Use calendar periods (week/month/year) instead of rolling periods if this is set to "true"
+USE_CALENDAR_PERIODS = os.getenv("LASTFM_USE_CALENDAR_PERIODS", "false").lower() == "true"
 
 # Fail early if required env vars are missing
 required_vars = [
@@ -82,7 +84,8 @@ def get_lastfm_scrobble_counts():
     Get scrobble counts from Last.fm for different time periods
     
     Returns:
-        dict: Dictionary with scrobble counts for today, week, month, year, and all time
+        dict: Dictionary with scrobble counts for today, week, month, year, all time,
+              and weekly/monthly averages
     """
     url = "https://ws.audioscrobbler.com/2.0/"
     
@@ -133,15 +136,46 @@ def get_lastfm_scrobble_counts():
     
     # Calculate timestamps for different periods
     today_start = int(datetime.datetime.combine(datetime.date.today(), datetime.time.min).timestamp())
-    week_start = int((datetime.datetime.now() - datetime.timedelta(days=7)).timestamp())
-    month_start = int((datetime.datetime.now() - datetime.timedelta(days=30)).timestamp())
-    year_start = int((datetime.datetime.now() - datetime.timedelta(days=365)).timestamp())
+    
+    if USE_CALENDAR_PERIODS:
+        # Calendar-based periods
+        # Get current date
+        current_date = datetime.datetime.now()
+        
+        # For calendar week: Get the Monday of the current week
+        # weekday() returns 0 for Monday, 6 for Sunday
+        days_since_monday = current_date.weekday()
+        monday = current_date - datetime.timedelta(days=days_since_monday)
+        week_start = int(datetime.datetime.combine(monday.date(), datetime.time.min).timestamp())
+        
+        # For calendar month: Get the 1st day of the current month
+        month_start = int(datetime.datetime(current_date.year, current_date.month, 1).timestamp())
+        
+        # For calendar year: Get the 1st day of the current year
+        year_start = int(datetime.datetime(current_date.year, 1, 1).timestamp())
+        
+        # Log the period type
+        print("Using calendar-based periods (current week/month/year)")
+    else:
+        # Rolling periods (last 7 days, last 30 days, last 365 days)
+        week_start = int((datetime.datetime.now() - datetime.timedelta(days=7)).timestamp())
+        month_start = int((datetime.datetime.now() - datetime.timedelta(days=30)).timestamp())
+        year_start = int((datetime.datetime.now() - datetime.timedelta(days=365)).timestamp())
+        
+        # Log the period type
+        print("Using rolling periods (last 7/30/365 days)")
     
     # Get counts for different periods
     today_count = get_count_for_period(from_timestamp=today_start, to_timestamp=now)
     week_count = get_count_for_period(from_timestamp=week_start, to_timestamp=now)
     month_count = get_count_for_period(from_timestamp=month_start, to_timestamp=now)
     year_count = get_count_for_period(from_timestamp=year_start, to_timestamp=now)
+    
+    # Calculate weekly average (from year count)
+    weekly_avg = round(year_count / 52.143) if year_count > 0 else 0
+    
+    # Calculate monthly average (from year count)
+    monthly_avg = round(year_count / 12) if year_count > 0 else 0
     
     # For all-time count, we use a different approach
     params = {
@@ -153,17 +187,39 @@ def get_lastfm_scrobble_counts():
     
     response = requests.get(url, params=params)
     all_time_count = 0
+    registered_date = None
     
     if response.status_code == 200:
         data = response.json()
         all_time_count = int(data.get('user', {}).get('playcount', 0))
+        
+        # Get user registration date if available
+        registered_timestamp = data.get('user', {}).get('registered', {}).get('#text')
+        if registered_timestamp:
+            registered_date = datetime.datetime.fromtimestamp(int(registered_timestamp))
+    
+    # If we have registration date, calculate more accurate long-term averages
+    if registered_date:
+        days_registered = (datetime.datetime.now() - registered_date).days
+        if days_registered > 0:
+            # More accurate lifetime weekly average
+            lifetime_weekly_avg = round(all_time_count / (days_registered / 7))
+            # More accurate lifetime monthly average
+            lifetime_monthly_avg = round(all_time_count / (days_registered / 30))
+            
+            # Use lifetime averages if registration is older than a year
+            if days_registered > 365:
+                weekly_avg = lifetime_weekly_avg
+                monthly_avg = lifetime_monthly_avg
     
     return {
         'today': today_count,
         'week': week_count,
         'month': month_count,
         'year': year_count,
-        'all_time': all_time_count
+        'all_time': all_time_count,
+        'weekly_avg': weekly_avg,
+        'monthly_avg': monthly_avg
     }
 
 # ====== SPOTIFY HELPERS ======
@@ -189,12 +245,17 @@ def format_description(stats):
         'week': f"{stats['week']:,}",
         'month': f"{stats['month']:,}",
         'year': f"{stats['year']:,}",
-        'all_time': f"{stats['all_time']:,}"
+        'all_time': f"{stats['all_time']:,}",
+        'weekly_avg': f"{stats['weekly_avg']:,}",
+        'monthly_avg': f"{stats['monthly_avg']:,}"
     }
+    
+    # Period description (calendar or rolling)
+    period_desc = "Calendar" if USE_CALENDAR_PERIODS else "Rolling"
     
     # Build the description
     description = (
-        f"Last.fm Stats for {LASTFM_USERNAME}{separator}"
+        f"Last.fm Stats for {LASTFM_USERNAME} ({period_desc}){separator}"
         f"Today: {formatted_stats['today']}{separator}"
         f"This Week: {formatted_stats['week']}{separator}"
         f"This Month: {formatted_stats['month']}{separator}"
@@ -210,10 +271,12 @@ def format_description(stats):
     if len(description) > 300:
         # If too long, use shorter format
         description = (
-            f"Last.fm Stats{separator}"
+            f"Last.fm Stats ({period_desc}){separator}"
             f"Today: {formatted_stats['today']}{separator}"
             f"Week: {formatted_stats['week']}{separator}"
             f"Month: {formatted_stats['month']}{separator}"
+            f"W-Avg: {formatted_stats['weekly_avg']}{separator}"
+            f"M-Avg: {formatted_stats['monthly_avg']}{separator}"
             f"Year: {formatted_stats['year']}{separator}"
             f"All: {formatted_stats['all_time']}"
         )
@@ -239,6 +302,8 @@ def sync_lastfm_stats():
         print(f"  Today: {stats['today']:,}")
         print(f"  This Week: {stats['week']:,}")
         print(f"  This Month: {stats['month']:,}")
+        print(f"  Weekly Average: {stats['weekly_avg']:,}")
+        print(f"  Monthly Average: {stats['monthly_avg']:,}")
         print(f"  This Year: {stats['year']:,}")
         print(f"  All Time: {stats['all_time']:,}")
         
@@ -293,6 +358,7 @@ def main():
         print(f"Starting Last.fm Stats to Spotify Description Sync")
         print(f"Last.fm User: {LASTFM_USERNAME}")
         print(f"Target Playlist: '{playlist_name}' (owned by {playlist_owner})")
+        print(f"Period Type: {'Calendar periods (current week/month/year)' if USE_CALENDAR_PERIODS else 'Rolling periods (last 7/30/365 days)'}")
         print(f"Poll Interval: {POLL_INTERVAL} seconds ({POLL_INTERVAL/60:.1f} minutes)")
         print("="*50 + "\n")
     except Exception as e:
@@ -300,6 +366,7 @@ def main():
         print(f"Starting Last.fm Stats to Spotify Description Sync")
         print(f"Last.fm User: {LASTFM_USERNAME}")
         print(f"Target Playlist ID: {SPOTIFY_STATS_PLAYLIST_ID}")
+        print(f"Period Type: {'Calendar periods (current week/month/year)' if USE_CALENDAR_PERIODS else 'Rolling periods (last 7/30/365 days)'}")
         print(f"Poll Interval: {POLL_INTERVAL} seconds ({POLL_INTERVAL/60:.1f} minutes)")
         print(f"Warning: Could not fetch playlist details: {e}")
         print("="*50 + "\n")

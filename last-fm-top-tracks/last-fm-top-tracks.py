@@ -211,7 +211,7 @@ def sync_lastfm_top_tracks():
         
         # Get top tracks from Last.fm
         print(f"[{now}] Fetching top tracks from Last.fm...")
-        top_tracks = get_lastfm_top_tracks(period='7day', limit=TOPTRACK_NUMBER)
+        top_tracks = get_lastfm_top_tracks(period='1month', limit=TOPTRACK_NUMBER)
         
         if not top_tracks:
             print("No tracks found in Last.fm top tracks")
